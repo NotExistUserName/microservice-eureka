@@ -1,0 +1,27 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: microservice-eureka
+eureka:
+  client:
+    #自身即为eureka注册服务,防止自注册
+    register-with-eureka: false
+    #自身即为eureka注册服务,无需从其他eureka上获取实例
+    fetch-registry: false
+    service-url:
+      defaultZone: http://10.150.123.118:8080/eureka/
+#健康检查相关配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          - prometheus
+  endpoint:
+    health:
+      show-details: never
+    prometheus:
+      enabled: true
